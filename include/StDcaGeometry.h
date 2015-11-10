@@ -6,7 +6,7 @@
 #define DCA_GEOMETRY_H
 #include "TObject.h"
 #include "StThreeVectorD.h"
-#include "StHelix.h"
+#include "StPhysicalHelixD.h"
 // #include "THelixTrack.h"
 
 #include <iostream>
@@ -28,7 +28,7 @@ public:
 	Double_t            hz()        const {return mCurv/mPti;}	  
 	StThreeVectorD      origin()    const;         
 	StThreeVectorD      momentum()  const;        
-	StHelix    			helix()     const;
+	StPhysicalHelixD    			helix()     const;
 	// THelixTrack         thelix()    const;
 	const float*        params()    const {return &mImp;}	  
 	const float*        errMatrix() const {return &mImpImp;} 
@@ -64,7 +64,7 @@ private:
 	Float_t  mTanImp, mTanZ, mTanPsi, mTanPti, mTanTan;
 	Char_t   mEnd[1];//!
 	
-	ClassDef(StDcaGeometry,1)
+	// ClassDef(StDcaGeometry,1)
 };
 std::ostream&  operator<<(std::ostream& os, StDcaGeometry const & dca);
 

@@ -56,6 +56,7 @@
 #include <algorithm>
 #include "StThreeVector.h"
 #include "SystemOfUnits.h"
+
 #if !defined(ST_NO_NAMESPACES)
 using std::pair;
 using std::swap;

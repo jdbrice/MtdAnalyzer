@@ -9,7 +9,8 @@
 #include "TCernLib.h"
 #include "TMatrix.h"
 #include "TMath.h"
-ClassImp(StDcaGeometry);
+
+// ClassImp(StDcaGeometry);
     
 static const char rcsid[] = "$Id: StDcaGeometry.cxx,v 2.11 2013/11/13 21:35:48 fisyak Exp $";
 
@@ -47,49 +48,19 @@ void StDcaGeometry::set(const double pars[7],const double errs[15])
   if (errs) TCL::ucopy(errs, &mImpImp, 15);
 }
 
-// StPhysicalHelixD StDcaGeometry::helix() const
-// {
-//     //    double curvature = fabs(mCurv);
-//     int  h = (mCurv>=0) ? 1:-1;
+StPhysicalHelixD StDcaGeometry::helix() const
+{
+    //    double curvature = fabs(mCurv);
+    int  h = (mCurv>=0) ? 1:-1;
     
-//     double phase = mPsi-h*M_PI/2;
+    double phase = mPsi-h*M_PI/2;
     
-//     return StPhysicalHelixD(fabs(mCurv),   // 1/cm
-//                             atan(mTan),    // radian
-//                             phase,         // radian
-//                             origin(),      // cm
-//                             h);
-// }
-
-// THelixTrack StDcaGeometry::thelix() const
-// {
-//     enum {kImp,kZ,kPsi,kPti,kTan};
-    
-//     StThreeVectorD pos = origin();
-//     StThreeVectorD dir = momentum().unit();
-//     THelixTrack myHelx(&(pos.x()),&(dir.x()),mCurv);
-//     double errXY[6],errSZ[6];
-//     const float *myErr = &mImpImp;
-//     int jjx=0,jjz=0;
-//     for (int i=0,li=0;i<5; li+=++i) {
-//         for (int j=0;j<=i;j++)        {
-// 	  do {// select XY part
-// 	      if(i==kZ || i==kTan)         break;
-// 	      if(j==kZ || j==kTan)         break;
-// 	      errXY[jjx++]=myErr[li+j];
-// 	  }
-// 	  while(0);
-// 	  do {// select SZ part
-// 	      if(i!=kZ && i!=kTan)         break;
-// 	      if(j!=kZ && j!=kTan)         break;
-// 	      errSZ[jjz++]=myErr[li+j];
-// 	  }
-// 	  while(0);
-//         } }
-//     errXY[3]*=hz();errXY[4]*=hz();errXY[5]*=hz()*hz();
-//     myHelx.SetEmx(errXY,errSZ);
-//     return myHelx;
-// }
+    return StPhysicalHelixD(fabs(mCurv),   // 1/cm
+                    atan(mTan),    // radian
+                    phase,         // radian
+                    origin(),      // cm
+                    h);
+}
 
 
 ostream&  operator<<(ostream& os, const StDcaGeometry& dca) {

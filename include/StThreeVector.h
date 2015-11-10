@@ -92,10 +92,10 @@
  **************************************************************************/
 #ifndef ST_THREE_VECTOR_HH
 #define ST_THREE_VECTOR_HH
-#ifdef __ROOT__
+
 #include "Rtypes.h"
-#endif
-#ifndef __CLANG__
+
+#include <fstream>
 #include <iostream>
 #include <math.h>
 #ifdef GNU_GCC
@@ -110,7 +110,8 @@
 using std::out_of_range;
 #    endif
 #endif
-#endif // __CINT__
+using namespace std;
+
 
 template<class T> class StThreeVector {
 public:    
