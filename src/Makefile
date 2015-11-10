@@ -18,11 +18,11 @@ ROOTGLIBS     	= $(shell root-config --glibs)
 # Custom Project includes and libs
 # -lGui -lHtml -lGuiHtml
 includes		= -I../include -I. -I$(ROOTSYS)/include
-libraries 		= $(ROOTLIBS) $(SYSLIBS)
+libraries 		= $(ROOTLIBS)
 staticLibs 		= 
 
 cxx 		= g++ -std=c++11 -O3
-flags 		= -Wall -g $(ROOTCFLAGS) $(includes) -Wno-write-strings -fno-inline 
+flags 		= -Wall $(ROOTCFLAGS) $(includes) 
 compile 	= $(cxx) $(flags) -c 
 ldFlags  	= $(ROOTLDFLAGS) 
 
